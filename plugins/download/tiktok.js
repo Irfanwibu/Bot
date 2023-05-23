@@ -14,7 +14,8 @@ exports.run = {
          if (!args[0].match('tiktok.com')) return client.reply(m.chat, global.status.invalid, m)
          client.sendReact(m.chat, '🕒', m.key)
          let old = new Date()
-         let json = await Api.tiktok(Func.ttFixed(args[0]))
+         let json = await Func.fetchJson(`https://api.tiklydown.me/api/download?url=${Func.isUrl(m.text)[0]}`)
+         if (json?.video?.noWatermark == undefined) return mess("error", m)
          if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
          let caption = `乂  *T I K T O K*\n\n`
          caption += `	◦  *Author* : ${json.data.author.nickname} (@${json.data.author.username})\n`

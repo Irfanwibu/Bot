@@ -14,7 +14,7 @@ exports.run = {
          if (!args[0].match(/(https:\/\/www.instagram.com)/gi)) return client.reply(m.chat, global.status.invalid, m)
          client.sendReact(m.chat, '🕒', m.key)
          let old = new Date()
-         let json = await Api.ig(Func.igFixed(args[0]))
+         let json = await Func.fetchJson(`https://xznsenpai.xyz/api/igdl?url=${Func.isUrl(m.text)[0]}`)
          if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
          json.data.map(async v => {
             client.sendFile(m.chat, v.url, v.type == 'mp4' ? Func.filename('mp4') : Func.filename('jpg'), `🍟 *Fetching* : ${((new Date - old) * 1)} ms`, m)
