@@ -15,11 +15,10 @@ exports.run = {
          client.sendReact(m.chat, '🕒', m.key)
          let old = new Date()
          let json = await Func.fetchJson(`https://xznsenpai.xyz/api/igdl?url=${Func.isUrl(m.text)[0]}`)
-         if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
-         json.data.map(async v => {
-            client.sendFile(m.chat, v.url, v.type == 'mp4' ? Func.filename('mp4') : Func.filename('jpg'), `🍟 *Fetching* : ${((new Date - old) * 1)} ms`, m)
+         for (let i of json.media) {
             await Func.delay(1500)
-         })
+            await client.sendFile(m.chat, i, '', `nih`, m)
+         }
       } catch (e) {
          console.log(e)
          return client.reply(m.chat, global.status.error, m)
