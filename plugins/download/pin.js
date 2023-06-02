@@ -13,7 +13,7 @@ exports.run = {
          if (!args[0].match(/pin(?:terest)?(?:\.it|\.com)/)) return client.reply(m.chat, global.status.invalid, m)
          client.sendReact(m.chat, '🕒', m.key)
          let old = new Date()
-         let json = await Api.pin(args[0])
+         let json = await Func.fetchJson(`https://sh.xznsenpai.xyz/api/igdl?url=${Func.isUrl(m.text)[0]}`)
          if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
          if (/jpg|mp4/.test(json.data.type)) return client.sendFile(m.chat, json.data.url, '', '', m)
          if (json.data.type == 'gif') return client.sendFile(m.chat, json.data.url, '', `🍟 *Fetching* : ${((new Date - old) * 1)} ms`, m, {
