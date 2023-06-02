@@ -17,14 +17,18 @@ module.exports = class NeoxrApi {
    }
    
    fb = async (url) => {
-      let json = await Func.fetchJson(this.baseUrl + '/fb?url=' + encodeURIComponent(url) + '&apikey=' + this.apiKey)
-      return json
-   }
+      let json = await Func.fetchJson(
+      "https://xznsenpai.xyz/api/download?url=" + url + '&apikey=' + 'Ikychan'
+    );
+    return json;
+  };
 
    ig = async (url) => {
-      let json = await Func.fetchJson(this.baseUrl + '/ig?url=' + url + '&apikey=' + this.apiKey)
-      return json
-   }
+      let json = await Func.fetchJson(
+      "https://xznsenpai.xyz/api/igdl?url=" + url + '&apikey=' + 'Ikychan'
+    );
+    return json;
+  };
 
    igs = async (url) => {
       let json = await Func.fetchJson(this.baseUrl + '/igstory?url=' + url + '&apikey=' + this.apiKey)
@@ -52,14 +56,18 @@ module.exports = class NeoxrApi {
    }
 
    tiktok = async (url) => {
-      let json = await Func.fetchJson(this.baseUrl + '/tiktok?url=' + url + '&apikey=' + this.apiKey)
-      return json
-   }
+    let json = await Func.fetchJson(
+      "https://sh.xznsenpai.xyz/api/tiktok?url=" + url + '&apikey=' + 'Ikychan'
+    );
+    return json;
+  };
 
    twitter = async (url) => {
-      let json = await Func.fetchJson(this.baseUrl + '/twitter?url=' + url + '&apikey=' + this.apiKey)
-      return json
-   }
+      let json = await Func.fetchJson(
+      "https://xznsenpai.xyz/api/download?url=" + url + '&apikey=' + 'Ikychan'
+    );
+    return json;
+  };
 
    soundcloud = async (url) => {
       let json = await Func.fetchJson(this.baseUrl + '/soundcloud?url=' + url + '&apikey=' + this.apiKey)
@@ -234,10 +242,12 @@ module.exports = class NeoxrApi {
       return json
    }
    
-   video = async (query) => {
-      let json = await Func.fetchJson(this.baseUrl + '/video?q=' + query + '&apikey=' + this.apiKey)
-      return json
-   }
+   video = async (url) => {
+    let json = await Func.fetchJson(
+      "https://mfarels.my.id/api/ytmp4?url=" + url
+    );
+    return json;
+  }
    
    youtube = async (url, type = 'video', quality = '480p') => {
       let json = await Func.fetchJson(this.baseUrl + '/youtube?url=' + url + '&type=' + type + '&quality=' + quality + '&apikey=' + this.apiKey)
